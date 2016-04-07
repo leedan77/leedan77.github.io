@@ -3,12 +3,13 @@ import SideBar from './sidebar';
 import Notes from './Notes';
 import NoteStore from '../stores/configureStore'
 import {createStore} from 'redux';
-import rootReducer from '../reducers';
+import rootReducer from '../reducers/noteReducer';
+import {createNote, updateNote, deleteNote} from '../actions/notes';
 
 const store = createStore(rootReducer);
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
-)
+let unsubscribe = store.subscribe(() => {
+  console.log(store.getState());
+})
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,45 +21,41 @@ export default class App extends React.Component {
     this.addNote = this.addNote.bind(this);
     this.editNote = this.editNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+    this.stateChange = this.stateChange.bind(this);
     this.state = store.getState();
+    store.dispatch(createNote('hehe'));
+    
+  }
+  componentDidMount() {
+    store.subscribe(this.stateChange);
+  }
+  componentWillUnmount() {
+        
+  }
+  stateChange() {
+    this.setState(store.getState());
   }
   // addNote = () => {}
   addNote() {
-    this.setState({
-      notes: [...this.state.notes, {id: uuid.v4(), task: 'new task'}]
-      /*
-      notes: this.state.notes.concat([{
-        id: uuid.v4(),
-        task: 'new task'
-      }])*/
-      
-    });
+    store.dispatch(createNote('new task'));
   };
   editNote(id, task) {
+
     // Don't modify if trying set an empty value
     if(!task.trim()) {
       return;
     }
-
-    const notes = this.state.notes.map(note => {
-      if(note.id === id && task) {
-        note.task = task;
-      }
-
-      return note;
-    });
-
-    this.setState({notes});
+    store.dispatch(updateNote(id, task));
+    
   };
 
   deleteNote(id, e) {
     e.stopPropagation();
-    this.setState({
-      notes: this.state.notes.filter(note => note.id !== id)
-    });
+    store.dispatch(deleteNote(id));
   }
   render() {
-    const notes = this.state.notes;
+    const notes = store.getState();
+    
     return (
 
       <div>

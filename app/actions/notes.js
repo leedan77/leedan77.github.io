@@ -6,16 +6,17 @@ export function createNote(note) {
     type: CREATE_NOTE,
     note: {
       id: uuid.v4(),
-      ...note
+      task: note
     }
   };
 };
 
 export const UPDATE_NOTE = 'UPDATE_NOTE';
-export function updateNote(updatedNote) {
+export function updateNote(id, task) {
   return {
     type: UPDATE_NOTE,
-    ...updatedNote
+    id,
+    task
   };
 };
 

@@ -12,7 +12,7 @@ export default function notes(state = initialState, action) {
 
     case types.UPDATE_NOTE:
       noteIndex = state.findIndex(note => note.get('id') === action.id);
-
+      
       if(noteIndex < 0) {
         return state;
       }
@@ -20,8 +20,9 @@ export default function notes(state = initialState, action) {
       return state.mergeIn([noteIndex], action)
 
     case types.DELETE_NOTE:
+      console.log(action);
       noteIndex = state.findIndex(note => note.get('id') === action.id);
-
+      console.log(noteIndex);
       if(noteIndex < 0) {
         return state;
       }

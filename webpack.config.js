@@ -16,16 +16,17 @@ module.exports = {
 		filename: 'bundle.js'
 	},
   module: {
-  	preLoaders: [
+  /*	preLoaders: [
   		{
   			test: /\.jsx/,
   			loader: 'eslint',
   			exclude: /node_modules/
   		}
   	],
+  */
   	loaders: [
   		{
-  			test: /\.jsx$/,
+  			test: /\.jsx$|\.js$/,
   			// see https://github.com/babel/babel-loader cacheDirectory
   			loader: 'babel?cacheDirectory',
   			exclude: /node_modules/
