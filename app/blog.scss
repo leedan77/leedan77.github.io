@@ -1,0 +1,166 @@
+html, body {
+  width: 100%;
+  height: 200%;
+}
+#app {
+  position: absolute;
+}
+.hero-section{
+  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: -1;
+  opacity: 0.8 ;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  top: -50px;
+  left: 0px;
+  height: 50px;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    opacity: 1;
+    top: 0px;
+    display: block;
+    background-color: yellow;
+  } 
+}
+
+.date--perspective {
+	perspective: 900px;
+  position: absolute;
+  width: 75px;
+  height: 90px;
+}
+
+.date {	
+	position: absolute;
+  width: 75px;
+  height: 90px;
+  background-color: #333;
+  text-align: center;
+  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;
+	transform-style: preserve-3d;
+  &:hover {
+  	transform: rotateX(65deg);
+  }
+	
+	.day {
+		padding-top: 15px;
+    font-weight: 900;
+    color: white;
+    font-size: 40px;
+	}
+
+	.month {
+		font-weight: 900;
+		color: white;
+	}
+
+  .year {
+  	background-color: rgba(60, 58, 53, 0.76);
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    padding: 4px 0;
+    transform: rotateX(-90deg);
+    transform-origin: 50% 0%;
+  }
+}
+
+$green: #0da58e;
+$light-green: #8cc152;
+$lime: #cdda49;
+$yellow: #fdc02f;
+$orange: #fd9727;
+$deep-orange: #fc5830;
+$red: #e2202c;
+$pink: #e62565;
+$purple: #9b2fae;
+$deep-purple: #673fb4;
+$blue: #4054b2;
+$light-blue: #587bf8;
+
+.green-bg {
+  background-color: $green;
+}
+.lightgreen-bg {
+  background-color: $light-green;
+}
+.lime-bg {
+  background-color: $lime;
+}
+.yellow-bg {
+  background-color: $yellow;
+}
+.orange-bg {
+  background-color: $orange;
+}
+.deeporange-bg {
+  background-color: $deep-orange;
+}
+.red-bg {
+  background-color: $red;
+}
+.pink-bg {
+  background-color: $pink;
+}
+.purple-bg {
+  background-color: $purple;
+}
+.deeppurple-bg {
+  background-color: $deep-purple;
+}
+.blue-bg {
+  background-color: $blue;
+}
+.lightblue-bg {
+  background-color: $light-blue;
+}
+
+.colorpicker {
+	font-size: 0;
+  position: relative;
+  top: 200px;
+  padding: 0px;
+  width: 80%;
+
+	li {
+		position: relative;
+		display: inline-block;
+		width: 8.333333%;
+		height: 50px;
+    
+    &:after {
+      transition: content 0.2s, opacity 0.2s 1s;
+      position: absolute;
+      color: #fff;
+      font-family: FontAwesome;
+      font-size: 20px;
+      content: "";
+      width: 100%;
+      height: 100%;
+      line-height: 50px;
+      text-align: center;
+    }
+
+  &:hover {
+    &:after {
+      content: "\f00c";
+    }
+  }
+		
+	}
+}
+

@@ -31,6 +31,11 @@ module.exports = {
   			loader: 'babel?cacheDirectory',
   			exclude: /node_modules/
   		},
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
+        exclude: /node_modules/
+      },
   		{
   			test: /\.css$/,
   			loaders: ['style', 'css'],
