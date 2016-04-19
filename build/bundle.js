@@ -60,11 +60,11 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	__webpack_require__(215);
+	__webpack_require__(216);
 
-	__webpack_require__(219);
+	__webpack_require__(220);
 
-	var _noteReducer = __webpack_require__(190);
+	var _noteReducer = __webpack_require__(191);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
 
@@ -19719,17 +19719,17 @@
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
-	var _configureStore = __webpack_require__(189);
+	var _configureStore = __webpack_require__(190);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
 	var _redux = __webpack_require__(166);
 
-	var _noteReducer = __webpack_require__(190);
+	var _noteReducer = __webpack_require__(191);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
 
-	var _notes = __webpack_require__(191);
+	var _notes = __webpack_require__(192);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26583,6 +26583,91 @@
 /* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Dropbtn = __webpack_require__(189);
+
+	var _Dropbtn2 = _interopRequireDefault(_Dropbtn);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Navbar = function (_React$Component) {
+		_inherits(Navbar, _React$Component);
+
+		function Navbar(props) {
+			_classCallCheck(this, Navbar);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this, props));
+
+			_this.handleScroll = function () {
+				if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+					_this.setState({ started: true });
+				} else {
+					_this.setState({ started: false });
+				}
+				if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+
+					_this.setState({ started: false, scrolled: true });
+				} else {
+					_this.setState({ scrolled: false });
+				}
+			};
+
+			_this.state = {
+				started: false,
+				scrolled: false
+			};
+
+			return _this;
+		}
+
+		_createClass(Navbar, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				window.addEventListener("scroll", this.handleScroll);
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				window.addEventListener("scroll", this.handleScroll);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				return _react2.default.createElement(
+					'header',
+					{ className: "navbar " + (this.state.scrolled ? "scrolled" : "") + (this.state.started ? "start" : "") },
+					_react2.default.createElement(_Dropbtn2.default, null)
+				);
+			}
+		}]);
+
+		return Navbar;
+	}(_react2.default.Component);
+
+	exports.default = Navbar;
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -26603,59 +26688,42 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Navbar = function (_React$Component) {
-		_inherits(Navbar, _React$Component);
+	var Dropbtn = function (_React$Component) {
+		_inherits(Dropbtn, _React$Component);
 
-		function Navbar(props) {
-			_classCallCheck(this, Navbar);
+		function Dropbtn(props) {
+			_classCallCheck(this, Dropbtn);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dropbtn).call(this, props));
 
-			_this.handleScroll = function () {
-				if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-
-					_this.setState({ scrolled: true });
-				} else {
-					_this.setState({ scrolled: false });
-				}
+			_this.handleClick = function () {
+				if (_this.state.clicked == false) _this.setState({ clicked: true });else _this.setState({ clicked: false });
 			};
 
 			_this.state = {
-				scrolled: false
+				clicked: false
 			};
-
 			return _this;
 		}
 
-		_createClass(Navbar, [{
-			key: "componentDidMount",
-			value: function componentDidMount() {
-				window.addEventListener("scroll", this.handleScroll);
-			}
-		}, {
-			key: "componentWillUnmount",
-			value: function componentWillUnmount() {
-				window.addEventListener("scroll", this.handleScroll);
-			}
-		}, {
+		_createClass(Dropbtn, [{
 			key: "render",
 			value: function render() {
-
 				return _react2.default.createElement(
-					"header",
-					{ className: "navbar " + (this.state.scrolled ? "scrolled" : "") },
-					"I am a banner"
+					"div",
+					{ className: "drop-btn " + (this.state.clicked ? "clicked" : ""), onClick: this.handleClick },
+					_react2.default.createElement("span", null)
 				);
 			}
 		}]);
 
-		return Navbar;
+		return Dropbtn;
 	}(_react2.default.Component);
 
-	exports.default = Navbar;
+	exports.default = Dropbtn;
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26667,7 +26735,7 @@
 
 	var _redux = __webpack_require__(166);
 
-	var _noteReducer = __webpack_require__(190);
+	var _noteReducer = __webpack_require__(191);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
 
@@ -26678,7 +26746,7 @@
 	}
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26690,7 +26758,7 @@
 
 	var _immutable = __webpack_require__(186);
 
-	var _notes = __webpack_require__(191);
+	var _notes = __webpack_require__(192);
 
 	var types = _interopRequireWildcard(_notes);
 
@@ -26737,7 +26805,7 @@
 	}
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26750,7 +26818,7 @@
 	exports.updateNote = updateNote;
 	exports.deleteNote = deleteNote;
 
-	var _nodeUuid = __webpack_require__(192);
+	var _nodeUuid = __webpack_require__(193);
 
 	var _nodeUuid2 = _interopRequireDefault(_nodeUuid);
 
@@ -26785,7 +26853,7 @@
 	};
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(Buffer) {//     uuid.js
@@ -26846,7 +26914,7 @@
 	    // Moderately fast, high quality
 	    if (true) {
 	      try {
-	        var _rb = __webpack_require__(197).randomBytes;
+	        var _rb = __webpack_require__(198).randomBytes;
 	        _nodeRNG = _rng = _rb && function() {return _rb(16);};
 	        _rng();
 	      } catch(e) {}
@@ -27061,10 +27129,10 @@
 	  }
 	})('undefined' !== typeof window ? window : null);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -27077,9 +27145,9 @@
 
 	'use strict'
 
-	var base64 = __webpack_require__(194)
-	var ieee754 = __webpack_require__(195)
-	var isArray = __webpack_require__(196)
+	var base64 = __webpack_require__(195)
+	var ieee754 = __webpack_require__(196)
+	var isArray = __webpack_require__(197)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -28616,10 +28684,10 @@
 	  return i
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -28749,7 +28817,7 @@
 
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -28839,7 +28907,7 @@
 
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -28850,10 +28918,10 @@
 
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(198)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(199)
 
 	function error () {
 	  var m = [].slice.call(arguments).join(' ')
@@ -28864,9 +28932,9 @@
 	    ].join('\n'))
 	}
 
-	exports.createHash = __webpack_require__(200)
+	exports.createHash = __webpack_require__(201)
 
-	exports.createHmac = __webpack_require__(212)
+	exports.createHmac = __webpack_require__(213)
 
 	exports.randomBytes = function(size, callback) {
 	  if (callback && callback.call) {
@@ -28887,7 +28955,7 @@
 	  return ['sha1', 'sha256', 'sha512', 'md5', 'rmd160']
 	}
 
-	var p = __webpack_require__(213)(exports)
+	var p = __webpack_require__(214)(exports)
 	exports.pbkdf2 = p.pbkdf2
 	exports.pbkdf2Sync = p.pbkdf2Sync
 
@@ -28907,16 +28975,16 @@
 	  }
 	})
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, Buffer) {(function() {
 	  var g = ('undefined' === typeof window ? global : window) || {}
 	  _crypto = (
-	    g.crypto || g.msCrypto || __webpack_require__(199)
+	    g.crypto || g.msCrypto || __webpack_require__(200)
 	  )
 	  module.exports = function(size) {
 	    // Modern Browsers
@@ -28940,22 +29008,22 @@
 	  }
 	}())
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(194).Buffer))
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(201)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(202)
 
-	var md5 = toConstructor(__webpack_require__(209))
-	var rmd160 = toConstructor(__webpack_require__(211))
+	var md5 = toConstructor(__webpack_require__(210))
+	var rmd160 = toConstructor(__webpack_require__(212))
 
 	function toConstructor (fn) {
 	  return function () {
@@ -28983,10 +29051,10 @@
 	  return createHash(alg)
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var exports = module.exports = function (alg) {
@@ -28995,16 +29063,16 @@
 	  return new Alg()
 	}
 
-	var Buffer = __webpack_require__(193).Buffer
-	var Hash   = __webpack_require__(202)(Buffer)
+	var Buffer = __webpack_require__(194).Buffer
+	var Hash   = __webpack_require__(203)(Buffer)
 
-	exports.sha1 = __webpack_require__(203)(Buffer, Hash)
-	exports.sha256 = __webpack_require__(207)(Buffer, Hash)
-	exports.sha512 = __webpack_require__(208)(Buffer, Hash)
+	exports.sha1 = __webpack_require__(204)(Buffer, Hash)
+	exports.sha256 = __webpack_require__(208)(Buffer, Hash)
+	exports.sha512 = __webpack_require__(209)(Buffer, Hash)
 
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports) {
 
 	module.exports = function (Buffer) {
@@ -29087,7 +29155,7 @@
 
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -29099,7 +29167,7 @@
 	 * See http://pajhome.org.uk/crypt/md5 for details.
 	 */
 
-	var inherits = __webpack_require__(204).inherits
+	var inherits = __webpack_require__(205).inherits
 
 	module.exports = function (Buffer, Hash) {
 
@@ -29231,7 +29299,7 @@
 
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -29759,7 +29827,7 @@
 	}
 	exports.isPrimitive = isPrimitive;
 
-	exports.isBuffer = __webpack_require__(205);
+	exports.isBuffer = __webpack_require__(206);
 
 	function objectToString(o) {
 	  return Object.prototype.toString.call(o);
@@ -29803,7 +29871,7 @@
 	 *     prototype.
 	 * @param {function} superCtor Constructor function to inherit prototype from.
 	 */
-	exports.inherits = __webpack_require__(206);
+	exports.inherits = __webpack_require__(207);
 
 	exports._extend = function(origin, add) {
 	  // Don't do anything if add isn't an object
@@ -29824,7 +29892,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(4)))
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports) {
 
 	module.exports = function isBuffer(arg) {
@@ -29835,7 +29903,7 @@
 	}
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -29864,7 +29932,7 @@
 
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -29876,7 +29944,7 @@
 	 *
 	 */
 
-	var inherits = __webpack_require__(204).inherits
+	var inherits = __webpack_require__(205).inherits
 
 	module.exports = function (Buffer, Hash) {
 
@@ -30017,10 +30085,10 @@
 
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var inherits = __webpack_require__(204).inherits
+	var inherits = __webpack_require__(205).inherits
 
 	module.exports = function (Buffer, Hash) {
 	  var K = [
@@ -30267,7 +30335,7 @@
 
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30279,7 +30347,7 @@
 	 * See http://pajhome.org.uk/crypt/md5 for more info.
 	 */
 
-	var helpers = __webpack_require__(210);
+	var helpers = __webpack_require__(211);
 
 	/*
 	 * Calculate the MD5 of an array of little-endian words, and a bit length
@@ -30428,7 +30496,7 @@
 
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {var intSize = 4;
@@ -30466,10 +30534,10 @@
 
 	module.exports = { hash: hash };
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {
@@ -30678,13 +30746,13 @@
 
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(200)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(201)
 
 	var zeroBuffer = new Buffer(128)
 	zeroBuffer.fill(0)
@@ -30728,13 +30796,13 @@
 	}
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var pbkdf2Export = __webpack_require__(214)
+	var pbkdf2Export = __webpack_require__(215)
 
 	module.exports = function (crypto, exports) {
 	  exports = exports || {}
@@ -30749,7 +30817,7 @@
 
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {module.exports = function(crypto) {
@@ -30837,19 +30905,19 @@
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(216);
+	var content = __webpack_require__(217);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(218)(content, {});
+	var update = __webpack_require__(219)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30866,10 +30934,10 @@
 	}
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(217)();
+	exports = module.exports = __webpack_require__(218)();
 	// imports
 
 
@@ -30880,7 +30948,7 @@
 
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports) {
 
 	/*
@@ -30936,7 +31004,7 @@
 
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -31188,16 +31256,16 @@
 
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(220);
+	var content = __webpack_require__(221);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(218)(content, {});
+	var update = __webpack_require__(219)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31214,15 +31282,15 @@
 	}
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(217)();
+	exports = module.exports = __webpack_require__(218)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "html, body {\n  width: 100%;\n  height: 200%; }\n\n#app {\n  position: absolute; }\n\n.hero-section {\n  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);\n  background-repeat: no-repeat;\n  background-size: cover;\n  width: 100%;\n  height: 100vh;\n  position: relative;\n  z-index: -1;\n  opacity: 0.8; }\n\nheader {\n  position: fixed;\n  width: 100%;\n  background-color: white;\n  top: -50px;\n  left: 0px;\n  height: 50px;\n  z-index: 1;\n  opacity: 0;\n  transition: all 0.3s ease; }\n  header.scrolled {\n    opacity: 1;\n    top: 0px;\n    display: block;\n    background-color: yellow; }\n\n.date--perspective {\n  perspective: 900px;\n  position: absolute;\n  width: 75px;\n  height: 90px; }\n\n.date {\n  position: absolute;\n  width: 75px;\n  height: 90px;\n  background-color: #333;\n  text-align: center;\n  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;\n  transform-style: preserve-3d; }\n  .date:hover {\n    transform: rotateX(65deg); }\n  .date .day {\n    padding-top: 15px;\n    font-weight: 900;\n    color: white;\n    font-size: 40px; }\n  .date .month {\n    font-weight: 900;\n    color: white; }\n  .date .year {\n    background-color: rgba(60, 58, 53, 0.76);\n    font-weight: 900;\n    color: white;\n    position: absolute;\n    top: 100%;\n    width: 100%;\n    padding: 4px 0;\n    transform: rotateX(-90deg);\n    transform-origin: 50% 0%; }\n\n.green-bg {\n  background-color: #0da58e; }\n\n.lightgreen-bg {\n  background-color: #8cc152; }\n\n.lime-bg {\n  background-color: #cdda49; }\n\n.yellow-bg {\n  background-color: #fdc02f; }\n\n.orange-bg {\n  background-color: #fd9727; }\n\n.deeporange-bg {\n  background-color: #fc5830; }\n\n.red-bg {\n  background-color: #e2202c; }\n\n.pink-bg {\n  background-color: #e62565; }\n\n.purple-bg {\n  background-color: #9b2fae; }\n\n.deeppurple-bg {\n  background-color: #673fb4; }\n\n.blue-bg {\n  background-color: #4054b2; }\n\n.lightblue-bg {\n  background-color: #587bf8; }\n\n.colorpicker {\n  font-size: 0;\n  position: relative;\n  top: 200px;\n  padding: 0px;\n  width: 80%; }\n  .colorpicker li {\n    position: relative;\n    display: inline-block;\n    width: 8.333333%;\n    height: 50px; }\n    .colorpicker li:after {\n      transition: content 0.2s, opacity 0.2s 1s;\n      position: absolute;\n      color: #fff;\n      font-family: FontAwesome;\n      font-size: 20px;\n      content: \"\";\n      width: 100%;\n      height: 100%;\n      line-height: 50px;\n      text-align: center; }\n    .colorpicker li:hover:after {\n      content: \"\\F00C\"; }\n", ""]);
+	exports.push([module.id, "html, body {\n  width: 100%;\n  height: 200%; }\n\n#app {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.drop-btn {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  width: 30px;\n  height: 25px; }\n  .drop-btn span, .drop-btn span:before, .drop-btn span:after {\n    position: absolute;\n    height: 4px;\n    width: 100%;\n    background: #fff;\n    transition: all 0.3s ease; }\n  .drop-btn span {\n    top: 10px; }\n    .drop-btn span:before {\n      content: '';\n      top: -10px; }\n    .drop-btn span:after {\n      content: '';\n      top: 10px; }\n  .drop-btn.clicked span {\n    transform: rotate(45deg); }\n    .drop-btn.clicked span:before {\n      opacity: 0; }\n    .drop-btn.clicked span:after {\n      top: 0;\n      transform: rotate(90deg); }\n\n.hero-section {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  z-index: -1; }\n\n.hero-content {\n  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  background-attachment: fixed;\n  width: 100%;\n  height: 100vh;\n  z-index: -1;\n  opacity: 0.8; }\n\nheader {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  left: 0px;\n  height: 70px;\n  z-index: 1;\n  transition: all 0.3s ease; }\n  header.start {\n    top: -70px; }\n  header.scrolled {\n    position: fixed;\n    opacity: 1;\n    top: 0px;\n    display: block;\n    background-color: black; }\n\n.date--perspective {\n  perspective: 900px;\n  position: absolute;\n  width: 75px;\n  height: 90px; }\n\n.date {\n  position: absolute;\n  width: 75px;\n  height: 90px;\n  background-color: #333;\n  text-align: center;\n  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;\n  transform-style: preserve-3d; }\n  .date:hover {\n    transform: rotateX(65deg); }\n  .date .day {\n    padding-top: 15px;\n    font-weight: 900;\n    color: white;\n    font-size: 40px; }\n  .date .month {\n    font-weight: 900;\n    color: white; }\n  .date .year {\n    background-color: rgba(60, 58, 53, 0.76);\n    font-weight: 900;\n    color: white;\n    position: absolute;\n    top: 100%;\n    width: 100%;\n    padding: 4px 0;\n    transform: rotateX(-90deg);\n    transform-origin: 50% 0%; }\n\n.green-bg {\n  background-color: #0da58e; }\n\n.lightgreen-bg {\n  background-color: #8cc152; }\n\n.lime-bg {\n  background-color: #cdda49; }\n\n.yellow-bg {\n  background-color: #fdc02f; }\n\n.orange-bg {\n  background-color: #fd9727; }\n\n.deeporange-bg {\n  background-color: #fc5830; }\n\n.red-bg {\n  background-color: #e2202c; }\n\n.pink-bg {\n  background-color: #e62565; }\n\n.purple-bg {\n  background-color: #9b2fae; }\n\n.deeppurple-bg {\n  background-color: #673fb4; }\n\n.blue-bg {\n  background-color: #4054b2; }\n\n.lightblue-bg {\n  background-color: #587bf8; }\n\n.colorpicker {\n  font-size: 0;\n  position: relative;\n  top: 200px;\n  padding: 0px;\n  width: 80%; }\n  .colorpicker li {\n    position: relative;\n    display: inline-block;\n    width: 8.333333%;\n    height: 50px; }\n    .colorpicker li:after {\n      transition: content 0.2s, opacity 0.2s 1s;\n      position: absolute;\n      color: #fff;\n      font-family: FontAwesome;\n      font-size: 20px;\n      content: \"\";\n      width: 100%;\n      height: 100%;\n      line-height: 50px;\n      text-align: center; }\n    .colorpicker li:hover:after {\n      content: \"\\F00C\"; }\n", ""]);
 
 	// exports
 
