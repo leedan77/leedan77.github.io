@@ -18,7 +18,7 @@ export default class Dropbtn extends React.Component {
 
 	render() {
 		return (
-			<div className={"drop-btn " + (this.state.clicked ? "clicked" : "")} onClick={this.handleClick} >
+			<div className={"drop-btn " + (this.props.clicked ? "clicked" : "")} onClick={this.props.onClick} >
   		 	<span></span>
   		</div>
   	);
