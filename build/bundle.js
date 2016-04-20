@@ -60,11 +60,11 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	__webpack_require__(216);
+	__webpack_require__(218);
 
-	__webpack_require__(220);
+	__webpack_require__(222);
 
-	var _noteReducer = __webpack_require__(191);
+	var _noteReducer = __webpack_require__(193);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
 
@@ -19719,17 +19719,21 @@
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
-	var _configureStore = __webpack_require__(190);
+	var _HeroSection = __webpack_require__(191);
+
+	var _HeroSection2 = _interopRequireDefault(_HeroSection);
+
+	var _configureStore = __webpack_require__(192);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
 	var _redux = __webpack_require__(166);
 
-	var _noteReducer = __webpack_require__(191);
+	var _noteReducer = __webpack_require__(193);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
 
-	var _notes = __webpack_require__(192);
+	var _notes = __webpack_require__(194);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19785,14 +19789,18 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_Navbar2.default, null),
+	        _react2.default.createElement(_HeroSection2.default, null),
 	        _react2.default.createElement(
-	          'button',
-	          { className: 'add-note', onClick: this.props.addNote },
-	          '+'
-	        ),
-	        _react2.default.createElement(_Notes2.default, { notes: this.props.notes, onEdit: this.props.editNote, onDelete: this.props.deleteNote }),
-	        _react2.default.createElement(_sidebar2.default, null),
-	        _react2.default.createElement(_Date2.default, null)
+	          'div',
+	          { className: 'gadget' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'add-note', onClick: this.props.addNote },
+	            '+'
+	          ),
+	          _react2.default.createElement(_Notes2.default, { notes: this.props.notes, onEdit: this.props.editNote, onDelete: this.props.deleteNote }),
+	          _react2.default.createElement(_Date2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -26586,7 +26594,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -26599,6 +26607,10 @@
 
 	var _Dropbtn2 = _interopRequireDefault(_Dropbtn);
 
+	var _Dropmenu = __webpack_require__(190);
+
+	var _Dropmenu2 = _interopRequireDefault(_Dropmenu);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26608,58 +26620,75 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Navbar = function (_React$Component) {
-		_inherits(Navbar, _React$Component);
+	  _inherits(Navbar, _React$Component);
 
-		function Navbar(props) {
-			_classCallCheck(this, Navbar);
+	  function Navbar(props) {
+	    _classCallCheck(this, Navbar);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this, props));
 
-			_this.handleScroll = function () {
-				if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-					_this.setState({ started: true });
-				} else {
-					_this.setState({ started: false });
-				}
-				if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+	    _this.handleScroll = function () {
+	      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+	        _this.setState({ started: true });
+	      } else {
+	        _this.setState({ started: false });
+	      }
+	      if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
 
-					_this.setState({ started: false, scrolled: true });
-				} else {
-					_this.setState({ scrolled: false });
-				}
-			};
+	        _this.setState({ started: false, scrolled: true });
+	      } else {
+	        _this.setState({ scrolled: false });
+	      }
+	    };
 
-			_this.state = {
-				started: false,
-				scrolled: false
-			};
+	    _this.handleClick = function () {
+	      if (_this.state.btnClicked == false) {
+	        document.getElementById("app").style.overflow = 'hidden';
+	        _this.setState({ btnClicked: true });
+	      } else {
+	        document.getElementById("app").style.overflow = '';
+	        _this.setState({ btnClicked: false });
+	      }
+	    };
 
-			return _this;
-		}
+	    _this.state = {
+	      started: false,
+	      scrolled: false,
+	      btnClicked: false
+	    };
 
-		_createClass(Navbar, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				window.addEventListener("scroll", this.handleScroll);
-			}
-		}, {
-			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {
-				window.addEventListener("scroll", this.handleScroll);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
+	    return _this;
+	  }
 
-				return _react2.default.createElement(
-					'header',
-					{ className: "navbar " + (this.state.scrolled ? "scrolled" : "") + (this.state.started ? "start" : "") },
-					_react2.default.createElement(_Dropbtn2.default, null)
-				);
-			}
-		}]);
+	  _createClass(Navbar, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      window.addEventListener("scroll", this.handleScroll);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.addEventListener("scroll", this.handleScroll);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
 
-		return Navbar;
+	      return _react2.default.createElement(
+	        'header',
+	        { className: "navbar " + (this.state.scrolled ? "scrolled" : "") + (this.state.started ? "start" : "") },
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'logo', style: this.state.btnClicked ? { color: "white" } : {} },
+	          'TxDragon'
+	        ),
+	        _react2.default.createElement(_Dropbtn2.default, { onClick: this.handleClick, clicked: this.state.btnClicked }),
+	        _react2.default.createElement(_Dropmenu2.default, { clicked: this.state.btnClicked })
+	      );
+	    }
+	  }]);
+
+	  return Navbar;
 	}(_react2.default.Component);
 
 	exports.default = Navbar;
@@ -26711,7 +26740,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
-					{ className: "drop-btn " + (this.state.clicked ? "clicked" : ""), onClick: this.handleClick },
+					{ className: "drop-btn " + (this.props.clicked ? "clicked" : ""), onClick: this.props.onClick },
 					_react2.default.createElement("span", null)
 				);
 			}
@@ -26731,11 +26760,144 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var style = {
+	  close: {
+	    visibility: 'hidden',
+	    opacity: 0
+	  },
+	  open: {
+	    visibility: 'visible',
+	    opacity: 1
+	  }
+	};
+
+	var Dropmenu = function (_React$Component) {
+	  _inherits(Dropmenu, _React$Component);
+
+	  function Dropmenu(props) {
+	    _classCallCheck(this, Dropmenu);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Dropmenu).call(this, props));
+	  }
+
+	  _createClass(Dropmenu, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'drop-menu', style: this.props.clicked ? style.open : style.close },
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              null,
+	              '關於我'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              null,
+	              '展示集'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              null,
+	              '迴響'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'social' },
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'https://www.facebook.com/shawn.lee.98871' },
+	            _react2.default.createElement('i', { className: 'fa fa-facebook', 'aria-hidden': 'true' })
+	          ),
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'https://twitter.com/txdragonLee' },
+	            _react2.default.createElement('i', { className: 'fa fa-twitter', 'aria-hidden': 'true' })
+	          )
+	        ),
+	        _react2.default.createElement('span', { className: 'copyright' })
+	      );
+	    }
+	  }]);
+
+	  return Dropmenu;
+	}(_react2.default.Component);
+
+	exports.default = Dropmenu;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    "section",
+	    { className: "hero-section" },
+	    _react2.default.createElement(
+	      "section",
+	      { className: "hero-content" },
+	      _react2.default.createElement("div", { className: "filter" })
+	    )
+	  );
+	};
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.default = configureStore;
 
 	var _redux = __webpack_require__(166);
 
-	var _noteReducer = __webpack_require__(191);
+	var _noteReducer = __webpack_require__(193);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
 
@@ -26746,7 +26908,7 @@
 	}
 
 /***/ },
-/* 191 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26758,7 +26920,7 @@
 
 	var _immutable = __webpack_require__(186);
 
-	var _notes = __webpack_require__(192);
+	var _notes = __webpack_require__(194);
 
 	var types = _interopRequireWildcard(_notes);
 
@@ -26805,7 +26967,7 @@
 	}
 
 /***/ },
-/* 192 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26818,7 +26980,7 @@
 	exports.updateNote = updateNote;
 	exports.deleteNote = deleteNote;
 
-	var _nodeUuid = __webpack_require__(193);
+	var _nodeUuid = __webpack_require__(195);
 
 	var _nodeUuid2 = _interopRequireDefault(_nodeUuid);
 
@@ -26853,7 +27015,7 @@
 	};
 
 /***/ },
-/* 193 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(Buffer) {//     uuid.js
@@ -26914,7 +27076,7 @@
 	    // Moderately fast, high quality
 	    if (true) {
 	      try {
-	        var _rb = __webpack_require__(198).randomBytes;
+	        var _rb = __webpack_require__(200).randomBytes;
 	        _nodeRNG = _rng = _rb && function() {return _rb(16);};
 	        _rng();
 	      } catch(e) {}
@@ -27129,10 +27291,10 @@
 	  }
 	})('undefined' !== typeof window ? window : null);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 194 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -27145,9 +27307,9 @@
 
 	'use strict'
 
-	var base64 = __webpack_require__(195)
-	var ieee754 = __webpack_require__(196)
-	var isArray = __webpack_require__(197)
+	var base64 = __webpack_require__(197)
+	var ieee754 = __webpack_require__(198)
+	var isArray = __webpack_require__(199)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -28684,10 +28846,10 @@
 	  return i
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 195 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -28817,7 +28979,7 @@
 
 
 /***/ },
-/* 196 */
+/* 198 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -28907,7 +29069,7 @@
 
 
 /***/ },
-/* 197 */
+/* 199 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -28918,10 +29080,10 @@
 
 
 /***/ },
-/* 198 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(199)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(201)
 
 	function error () {
 	  var m = [].slice.call(arguments).join(' ')
@@ -28932,9 +29094,9 @@
 	    ].join('\n'))
 	}
 
-	exports.createHash = __webpack_require__(201)
+	exports.createHash = __webpack_require__(203)
 
-	exports.createHmac = __webpack_require__(213)
+	exports.createHmac = __webpack_require__(215)
 
 	exports.randomBytes = function(size, callback) {
 	  if (callback && callback.call) {
@@ -28955,7 +29117,7 @@
 	  return ['sha1', 'sha256', 'sha512', 'md5', 'rmd160']
 	}
 
-	var p = __webpack_require__(214)(exports)
+	var p = __webpack_require__(216)(exports)
 	exports.pbkdf2 = p.pbkdf2
 	exports.pbkdf2Sync = p.pbkdf2Sync
 
@@ -28975,16 +29137,16 @@
 	  }
 	})
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, Buffer) {(function() {
 	  var g = ('undefined' === typeof window ? global : window) || {}
 	  _crypto = (
-	    g.crypto || g.msCrypto || __webpack_require__(200)
+	    g.crypto || g.msCrypto || __webpack_require__(202)
 	  )
 	  module.exports = function(size) {
 	    // Modern Browsers
@@ -29008,22 +29170,22 @@
 	  }
 	}())
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(196).Buffer))
 
 /***/ },
-/* 200 */
+/* 202 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 201 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(202)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(204)
 
-	var md5 = toConstructor(__webpack_require__(210))
-	var rmd160 = toConstructor(__webpack_require__(212))
+	var md5 = toConstructor(__webpack_require__(212))
+	var rmd160 = toConstructor(__webpack_require__(214))
 
 	function toConstructor (fn) {
 	  return function () {
@@ -29051,10 +29213,10 @@
 	  return createHash(alg)
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 202 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var exports = module.exports = function (alg) {
@@ -29063,16 +29225,16 @@
 	  return new Alg()
 	}
 
-	var Buffer = __webpack_require__(194).Buffer
-	var Hash   = __webpack_require__(203)(Buffer)
+	var Buffer = __webpack_require__(196).Buffer
+	var Hash   = __webpack_require__(205)(Buffer)
 
-	exports.sha1 = __webpack_require__(204)(Buffer, Hash)
-	exports.sha256 = __webpack_require__(208)(Buffer, Hash)
-	exports.sha512 = __webpack_require__(209)(Buffer, Hash)
+	exports.sha1 = __webpack_require__(206)(Buffer, Hash)
+	exports.sha256 = __webpack_require__(210)(Buffer, Hash)
+	exports.sha512 = __webpack_require__(211)(Buffer, Hash)
 
 
 /***/ },
-/* 203 */
+/* 205 */
 /***/ function(module, exports) {
 
 	module.exports = function (Buffer) {
@@ -29155,7 +29317,7 @@
 
 
 /***/ },
-/* 204 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -29167,7 +29329,7 @@
 	 * See http://pajhome.org.uk/crypt/md5 for details.
 	 */
 
-	var inherits = __webpack_require__(205).inherits
+	var inherits = __webpack_require__(207).inherits
 
 	module.exports = function (Buffer, Hash) {
 
@@ -29299,7 +29461,7 @@
 
 
 /***/ },
-/* 205 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -29827,7 +29989,7 @@
 	}
 	exports.isPrimitive = isPrimitive;
 
-	exports.isBuffer = __webpack_require__(206);
+	exports.isBuffer = __webpack_require__(208);
 
 	function objectToString(o) {
 	  return Object.prototype.toString.call(o);
@@ -29871,7 +30033,7 @@
 	 *     prototype.
 	 * @param {function} superCtor Constructor function to inherit prototype from.
 	 */
-	exports.inherits = __webpack_require__(207);
+	exports.inherits = __webpack_require__(209);
 
 	exports._extend = function(origin, add) {
 	  // Don't do anything if add isn't an object
@@ -29892,7 +30054,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(4)))
 
 /***/ },
-/* 206 */
+/* 208 */
 /***/ function(module, exports) {
 
 	module.exports = function isBuffer(arg) {
@@ -29903,7 +30065,7 @@
 	}
 
 /***/ },
-/* 207 */
+/* 209 */
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -29932,7 +30094,7 @@
 
 
 /***/ },
-/* 208 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -29944,7 +30106,7 @@
 	 *
 	 */
 
-	var inherits = __webpack_require__(205).inherits
+	var inherits = __webpack_require__(207).inherits
 
 	module.exports = function (Buffer, Hash) {
 
@@ -30085,10 +30247,10 @@
 
 
 /***/ },
-/* 209 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var inherits = __webpack_require__(205).inherits
+	var inherits = __webpack_require__(207).inherits
 
 	module.exports = function (Buffer, Hash) {
 	  var K = [
@@ -30335,7 +30497,7 @@
 
 
 /***/ },
-/* 210 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30347,7 +30509,7 @@
 	 * See http://pajhome.org.uk/crypt/md5 for more info.
 	 */
 
-	var helpers = __webpack_require__(211);
+	var helpers = __webpack_require__(213);
 
 	/*
 	 * Calculate the MD5 of an array of little-endian words, and a bit length
@@ -30496,7 +30658,7 @@
 
 
 /***/ },
-/* 211 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {var intSize = 4;
@@ -30534,10 +30696,10 @@
 
 	module.exports = { hash: hash };
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 212 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {
@@ -30746,13 +30908,13 @@
 
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 213 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(201)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(203)
 
 	var zeroBuffer = new Buffer(128)
 	zeroBuffer.fill(0)
@@ -30796,13 +30958,13 @@
 	}
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 214 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var pbkdf2Export = __webpack_require__(215)
+	var pbkdf2Export = __webpack_require__(217)
 
 	module.exports = function (crypto, exports) {
 	  exports = exports || {}
@@ -30817,7 +30979,7 @@
 
 
 /***/ },
-/* 215 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {module.exports = function(crypto) {
@@ -30905,19 +31067,19 @@
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(194).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(196).Buffer))
 
 /***/ },
-/* 216 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(217);
+	var content = __webpack_require__(219);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(219)(content, {});
+	var update = __webpack_require__(221)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30934,21 +31096,21 @@
 	}
 
 /***/ },
-/* 217 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(218)();
+	exports = module.exports = __webpack_require__(220)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "body {\n  background: cornsilk;\n  font-family: sans-serif;\n  margin: 0;\n}\n\n.add-note {\n  background-color: #fdfdfd;\n  border: 1px solid #ccc;\n}\n\n.notes {\n  margin: 0.5em;\n  padding-left: 0;\n\n  max-width: 10em;\n  list-style: none;\n}\n\n.note {\n  margin-bottom: 0.5em;\n  padding: 0.5em;\n\n  background-color: #fdfdfd;\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);\n}\n.note:hover {\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.7);\n\n  transition: all 0.6s;\n}\n\n.note .task {\n  /* force to use inline-block so that it gets minimum height */\n  display: inline-block;\n}\n\n.note .delete-note {\n  float: right;\n\n  padding: 0;\n\n  background-color: #fdfdfd;\n  border: none;\n\n  cursor: pointer;\n\n  visibility: hidden;\n}\n.note:hover .delete-note {\n  visibility: visible;\n}", ""]);
+	exports.push([module.id, "body {\n  font-family: sans-serif;\n  margin: 0;\n}\n\n.add-note {\n  background-color: #fdfdfd;\n  border: 1px solid #ccc;\n}\n\n.notes {\n  margin: 0.5em;\n  padding-left: 0;\n\n  max-width: 10em;\n  list-style: none;\n}\n\n.note {\n  margin-bottom: 0.5em;\n  padding: 0.5em;\n\n  background-color: #fdfdfd;\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);\n}\n.note:hover {\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.7);\n\n  transition: all 0.6s;\n}\n\n.note .task {\n  /* force to use inline-block so that it gets minimum height */\n  display: inline-block;\n}\n\n.note .delete-note {\n  float: right;\n\n  padding: 0;\n\n  background-color: #fdfdfd;\n  border: none;\n\n  cursor: pointer;\n\n  visibility: hidden;\n}\n.note:hover .delete-note {\n  visibility: visible;\n}", ""]);
 
 	// exports
 
 
 /***/ },
-/* 218 */
+/* 220 */
 /***/ function(module, exports) {
 
 	/*
@@ -31004,7 +31166,7 @@
 
 
 /***/ },
-/* 219 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -31256,16 +31418,16 @@
 
 
 /***/ },
-/* 220 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(221);
+	var content = __webpack_require__(223);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(219)(content, {});
+	var update = __webpack_require__(221)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31282,15 +31444,15 @@
 	}
 
 /***/ },
-/* 221 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(218)();
+	exports = module.exports = __webpack_require__(220)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "html, body {\n  width: 100%;\n  height: 200%; }\n\n#app {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.drop-btn {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  width: 30px;\n  height: 25px; }\n  .drop-btn span, .drop-btn span:before, .drop-btn span:after {\n    position: absolute;\n    height: 4px;\n    width: 100%;\n    background: #fff;\n    transition: all 0.3s ease; }\n  .drop-btn span {\n    top: 10px; }\n    .drop-btn span:before {\n      content: '';\n      top: -10px; }\n    .drop-btn span:after {\n      content: '';\n      top: 10px; }\n  .drop-btn.clicked span {\n    transform: rotate(45deg); }\n    .drop-btn.clicked span:before {\n      opacity: 0; }\n    .drop-btn.clicked span:after {\n      top: 0;\n      transform: rotate(90deg); }\n\n.hero-section {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  z-index: -1; }\n\n.hero-content {\n  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  background-attachment: fixed;\n  width: 100%;\n  height: 100vh;\n  z-index: -1;\n  opacity: 0.8; }\n\nheader {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  left: 0px;\n  height: 70px;\n  z-index: 1;\n  transition: all 0.3s ease; }\n  header.start {\n    top: -70px; }\n  header.scrolled {\n    position: fixed;\n    opacity: 1;\n    top: 0px;\n    display: block;\n    background-color: black; }\n\n.date--perspective {\n  perspective: 900px;\n  position: absolute;\n  width: 75px;\n  height: 90px; }\n\n.date {\n  position: absolute;\n  width: 75px;\n  height: 90px;\n  background-color: #333;\n  text-align: center;\n  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;\n  transform-style: preserve-3d; }\n  .date:hover {\n    transform: rotateX(65deg); }\n  .date .day {\n    padding-top: 15px;\n    font-weight: 900;\n    color: white;\n    font-size: 40px; }\n  .date .month {\n    font-weight: 900;\n    color: white; }\n  .date .year {\n    background-color: rgba(60, 58, 53, 0.76);\n    font-weight: 900;\n    color: white;\n    position: absolute;\n    top: 100%;\n    width: 100%;\n    padding: 4px 0;\n    transform: rotateX(-90deg);\n    transform-origin: 50% 0%; }\n\n.green-bg {\n  background-color: #0da58e; }\n\n.lightgreen-bg {\n  background-color: #8cc152; }\n\n.lime-bg {\n  background-color: #cdda49; }\n\n.yellow-bg {\n  background-color: #fdc02f; }\n\n.orange-bg {\n  background-color: #fd9727; }\n\n.deeporange-bg {\n  background-color: #fc5830; }\n\n.red-bg {\n  background-color: #e2202c; }\n\n.pink-bg {\n  background-color: #e62565; }\n\n.purple-bg {\n  background-color: #9b2fae; }\n\n.deeppurple-bg {\n  background-color: #673fb4; }\n\n.blue-bg {\n  background-color: #4054b2; }\n\n.lightblue-bg {\n  background-color: #587bf8; }\n\n.colorpicker {\n  font-size: 0;\n  position: relative;\n  top: 200px;\n  padding: 0px;\n  width: 80%; }\n  .colorpicker li {\n    position: relative;\n    display: inline-block;\n    width: 8.333333%;\n    height: 50px; }\n    .colorpicker li:after {\n      transition: content 0.2s, opacity 0.2s 1s;\n      position: absolute;\n      color: #fff;\n      font-family: FontAwesome;\n      font-size: 20px;\n      content: \"\";\n      width: 100%;\n      height: 100%;\n      line-height: 50px;\n      text-align: center; }\n    .colorpicker li:hover:after {\n      content: \"\\F00C\"; }\n", ""]);
+	exports.push([module.id, "html, body {\n  width: 100%;\n  height: 100%; }\n\nbody {\n  background: #eee; }\n\n#app {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.gadget {\n  position: absolute; }\n\n.logo {\n  position: absolute;\n  top: 15px;\n  left: 10px;\n  font-size: 24px;\n  font-weight: 900;\n  color: dimgray; }\n\n.drop-menu {\n  position: fixed;\n  color: #fff;\n  background-color: rgba(21, 101, 192, 0.85);\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  text-align: center;\n  padding-top: 100px;\n  font-size: 24px;\n  line-height: 2;\n  transition: all .3s ease;\n  z-index: -1; }\n  .drop-menu ul {\n    list-style: none;\n    padding: 0; }\n    .drop-menu ul a {\n      padding-bottom: 5px; }\n      .drop-menu ul a:hover {\n        border-bottom: 3px solid #3bdfba; }\n  .drop-menu .social {\n    position: absolute;\n    right: 0;\n    left: 0;\n    bottom: 30px; }\n    .drop-menu .social a {\n      margin: 10px;\n      padding-bottom: 5px;\n      text-decoration: none;\n      color: white; }\n      .drop-menu .social a:hover {\n        border-bottom: 3px solid #3bdfba; }\n\n.drop-btn {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  width: 30px;\n  height: 25px;\n  z-index: 10;\n  cursor: pointer; }\n  .drop-btn span, .drop-btn span:before, .drop-btn span:after {\n    position: absolute;\n    height: 4px;\n    width: 100%;\n    background: #fff;\n    transition: all 0.3s ease; }\n  .drop-btn span {\n    top: 10px; }\n    .drop-btn span:before {\n      content: '';\n      top: -10px; }\n    .drop-btn span:after {\n      content: '';\n      top: 10px; }\n  .drop-btn.clicked span {\n    transform: rotate(45deg); }\n    .drop-btn.clicked span:before {\n      opacity: 0; }\n    .drop-btn.clicked span:after {\n      top: 0;\n      transform: rotate(90deg); }\n\n.hero-section {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  z-index: -1; }\n\n.hero-content {\n  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  background-attachment: fixed;\n  width: 100%;\n  height: 100vh;\n  z-index: -1;\n  opacity: 0.8; }\n\nheader {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  left: 0px;\n  height: 70px;\n  z-index: 1;\n  transition: all 0.3s ease; }\n  header.start {\n    top: -70px; }\n  header.scrolled {\n    position: fixed;\n    opacity: 1;\n    top: 0px;\n    display: block;\n    background-color: black; }\n\n.date--perspective {\n  perspective: 900px;\n  position: absolute;\n  width: 75px;\n  height: 90px; }\n\n.date {\n  position: absolute;\n  width: 75px;\n  height: 90px;\n  background-color: #333;\n  text-align: center;\n  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;\n  transform-style: preserve-3d; }\n  .date:hover {\n    transform: rotateX(65deg); }\n  .date .day {\n    padding-top: 15px;\n    font-weight: 900;\n    color: white;\n    font-size: 40px; }\n  .date .month {\n    font-weight: 900;\n    color: white; }\n  .date .year {\n    background-color: rgba(60, 58, 53, 0.76);\n    font-weight: 900;\n    color: white;\n    position: absolute;\n    top: 100%;\n    width: 100%;\n    padding: 4px 0;\n    transform: rotateX(-90deg);\n    transform-origin: 50% 0%; }\n\n.green-bg {\n  background-color: #0da58e; }\n\n.lightgreen-bg {\n  background-color: #8cc152; }\n\n.lime-bg {\n  background-color: #cdda49; }\n\n.yellow-bg {\n  background-color: #fdc02f; }\n\n.orange-bg {\n  background-color: #fd9727; }\n\n.deeporange-bg {\n  background-color: #fc5830; }\n\n.red-bg {\n  background-color: #e2202c; }\n\n.pink-bg {\n  background-color: #e62565; }\n\n.purple-bg {\n  background-color: #9b2fae; }\n\n.deeppurple-bg {\n  background-color: #673fb4; }\n\n.blue-bg {\n  background-color: #4054b2; }\n\n.lightblue-bg {\n  background-color: #587bf8; }\n\n.colorpicker {\n  font-size: 0;\n  position: relative;\n  top: 200px;\n  padding: 0px;\n  width: 80%; }\n  .colorpicker li {\n    position: relative;\n    display: inline-block;\n    width: 8.333333%;\n    height: 50px; }\n    .colorpicker li:after {\n      transition: content 0.2s, opacity 0.2s 1s;\n      position: absolute;\n      color: #fff;\n      font-family: FontAwesome;\n      font-size: 20px;\n      content: \"\";\n      width: 100%;\n      height: 100%;\n      line-height: 50px;\n      text-align: center; }\n    .colorpicker li:hover:after {\n      content: \"\\F00C\"; }\n", ""]);
 
 	// exports
 
