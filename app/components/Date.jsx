@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const dayStyle = {
 	paddingTop: 15,
   fontWeight: 900,
@@ -24,20 +25,28 @@ const yearStyle = {
   transformOorigin: '50% 0%',
 };
 */
+let date = new Date();
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
+
 
 const Day = () => (
-	<div className="day">8</div>
+	<div className="day">{date.getDate()}</div>
 );
 
 const Month = () => {
-	return <div className="month">APRIL</div>;
+	return <div className="month">{monthNames[date.getMonth()].toUpperCase()}</div>;
 }
 
 const Year = () => {
-	return <div className="year">2016</div>;
+	return <div className="year">{date.getFullYear()}</div>;
 }
 
-const Date = () => {
+const D = () => {
 	return (
 		<div className="date--perspective">
 			<div className="date">
@@ -49,4 +58,4 @@ const Date = () => {
 	);
 }
 
-export default Date;
+export default D;

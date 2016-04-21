@@ -5,6 +5,7 @@ import Notes from '../components/Notes';
 import Date from '../components/Date';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
+import Footer from '../components/Footer';
 import NoteStore from '../stores/configureStore'
 import {createStore} from 'redux';
 import rootReducer from '../reducers/noteReducer';
@@ -61,6 +62,7 @@ class App extends React.Component {
           <Notes notes={this.props.notes} onEdit={this.props.editNote} onDelete={this.props.deleteNote}/>
           <Date />
         </div>
+        <Footer />
       </div>
 
     );    
