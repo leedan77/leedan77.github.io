@@ -64,6 +64,8 @@
 
 	__webpack_require__(223);
 
+	__webpack_require__(225);
+
 	var _noteReducer = __webpack_require__(194);
 
 	var _noteReducer2 = _interopRequireDefault(_noteReducer);
@@ -26651,10 +26653,10 @@
 
 	    _this.handleClick = function () {
 	      if (_this.state.btnClicked == false) {
-	        document.getElementById("app").style.overflow = 'hidden';
+	        document.body.style.overflow = 'hidden';
 	        _this.setState({ btnClicked: true });
 	      } else {
-	        document.getElementById("app").style.overflow = '';
+	        document.body.style.overflow = '';
 	        _this.setState({ btnClicked: false });
 	      }
 	    };
@@ -31146,8 +31148,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./main.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./main.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./reset.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./reset.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31165,7 +31167,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  font-family: sans-serif;\n  margin: 0;\n}\n\n.add-note {\n  background-color: #fdfdfd;\n  border: 1px solid #ccc;\n}\n\n.notes {\n  margin: 0.5em;\n  padding-left: 0;\n\n  max-width: 10em;\n  list-style: none;\n}\n\n.note {\n  margin-bottom: 0.5em;\n  padding: 0.5em;\n\n  background-color: #fdfdfd;\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);\n}\n.note:hover {\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.7);\n\n  transition: all 0.6s;\n}\n\n.note .task {\n  /* force to use inline-block so that it gets minimum height */\n  display: inline-block;\n}\n\n.note .delete-note {\n  float: right;\n\n  padding: 0;\n\n  background-color: #fdfdfd;\n  border: none;\n\n  cursor: pointer;\n\n  visibility: hidden;\n}\n.note:hover .delete-note {\n  visibility: visible;\n}", ""]);
+	exports.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed, \nfigure, figcaption, footer, header, hgroup, \nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, \nfooter, header, hgroup, menu, nav, section {\n  display: block;\n}\nbody {\n  line-height: 1;\n}\nol, ul {\n  list-style: none;\n}\nblockquote, q {\n  quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}", ""]);
 
 	// exports
 
@@ -31494,8 +31496,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./blog.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./blog.scss");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./main.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./main.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31513,7 +31515,47 @@
 
 
 	// module
-	exports.push([module.id, "html, body {\n  width: 100%;\n  height: 100%; }\n\nbody {\n  background: #eee;\n  padding-bottom: 200px; }\n\n#app {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.gadget {\n  position: absolute; }\n\n.logo {\n  position: absolute;\n  top: 20px;\n  left: 10px;\n  font-size: 24px;\n  font-weight: 900;\n  color: dimgray; }\n\n.drop-menu {\n  position: fixed;\n  color: #fff;\n  background-color: rgba(255, 66, 153, 0.71);\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  text-align: center;\n  padding-top: 100px;\n  font-size: 24px;\n  line-height: 2;\n  transition: all .3s ease;\n  z-index: -1; }\n  .drop-menu ul {\n    list-style: none;\n    padding: 0; }\n    .drop-menu ul a {\n      padding-bottom: 5px; }\n      .drop-menu ul a:hover {\n        border-bottom: 3px solid #3bdfba; }\n  .drop-menu .social {\n    position: absolute;\n    right: 0;\n    left: 0;\n    bottom: 30px; }\n    .drop-menu .social a {\n      margin: 10px;\n      padding-bottom: 5px;\n      text-decoration: none;\n      color: white; }\n      .drop-menu .social a:hover {\n        border-bottom: 3px solid #3bdfba; }\n\n.drop-btn {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  width: 30px;\n  height: 25px;\n  z-index: 10;\n  cursor: pointer; }\n  .drop-btn span, .drop-btn span:before, .drop-btn span:after {\n    position: absolute;\n    height: 4px;\n    width: 100%;\n    background: #fff;\n    transition: all 0.3s ease; }\n  .drop-btn span {\n    top: 10px; }\n    .drop-btn span:before {\n      content: '';\n      top: -10px; }\n    .drop-btn span:after {\n      content: '';\n      top: 10px; }\n  .drop-btn.clicked span {\n    transform: rotate(45deg); }\n    .drop-btn.clicked span:before {\n      opacity: 0; }\n    .drop-btn.clicked span:after {\n      top: 0;\n      transform: rotate(90deg); }\n\n.hero-section {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  z-index: 1; }\n\n.hero-content {\n  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  background-attachment: fixed;\n  width: 100%;\n  height: 100vh;\n  z-index: 1;\n  opacity: 0.8; }\n\nheader {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  left: 0px;\n  height: 70px;\n  z-index: 2;\n  transition: all 0.3s ease; }\n  header.start {\n    top: -70px; }\n  header.scrolled {\n    position: fixed;\n    opacity: 1;\n    top: 0px;\n    display: block;\n    background-color: black; }\n\n.foot {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  text-align: center;\n  padding-bottom: 3.5%; }\n  .foot .copyright {\n    color: rgba(0, 0, 0, 0.47); }\n\n.date--perspective {\n  perspective: 900px;\n  position: absolute;\n  width: 75px;\n  height: 90px; }\n\n.date {\n  position: absolute;\n  width: 75px;\n  height: 90px;\n  background-color: #333;\n  text-align: center;\n  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;\n  transform-style: preserve-3d; }\n  .date:hover {\n    transform: rotateX(65deg); }\n  .date .day {\n    padding-top: 15px;\n    font-weight: 900;\n    color: white;\n    font-size: 40px; }\n  .date .month {\n    font-weight: 900;\n    color: white; }\n  .date .year {\n    background-color: rgba(60, 58, 53, 0.76);\n    font-weight: 900;\n    color: white;\n    position: absolute;\n    top: 100%;\n    width: 100%;\n    padding: 4px 0;\n    transform: rotateX(-90deg);\n    transform-origin: 50% 0%; }\n\n.green-bg {\n  background-color: #0da58e; }\n\n.lightgreen-bg {\n  background-color: #8cc152; }\n\n.lime-bg {\n  background-color: #cdda49; }\n\n.yellow-bg {\n  background-color: #fdc02f; }\n\n.orange-bg {\n  background-color: #fd9727; }\n\n.deeporange-bg {\n  background-color: #fc5830; }\n\n.red-bg {\n  background-color: #e2202c; }\n\n.pink-bg {\n  background-color: #e62565; }\n\n.purple-bg {\n  background-color: #9b2fae; }\n\n.deeppurple-bg {\n  background-color: #673fb4; }\n\n.blue-bg {\n  background-color: #4054b2; }\n\n.lightblue-bg {\n  background-color: #587bf8; }\n\n.colorpicker {\n  font-size: 0;\n  position: relative;\n  top: 200px;\n  padding: 0px;\n  width: 80%; }\n  .colorpicker li {\n    position: relative;\n    display: inline-block;\n    width: 8.333333%;\n    height: 50px; }\n    .colorpicker li:after {\n      transition: content 0.2s, opacity 0.2s 1s;\n      position: absolute;\n      color: #fff;\n      font-family: FontAwesome;\n      font-size: 20px;\n      content: \"\";\n      width: 100%;\n      height: 100%;\n      line-height: 50px;\n      text-align: center; }\n    .colorpicker li:hover:after {\n      content: \"\\F00C\"; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: sans-serif;\n  margin: 0;\n}\n\n.add-note {\n  background-color: #fdfdfd;\n  border: 1px solid #ccc;\n}\n\n.notes {\n  margin: 0.5em;\n  padding-left: 0;\n\n  max-width: 10em;\n  list-style: none;\n}\n\n.note {\n  margin-bottom: 0.5em;\n  padding: 0.5em;\n\n  background-color: #fdfdfd;\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);\n}\n.note:hover {\n  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.7);\n\n  transition: all 0.6s;\n}\n\n.note .task {\n  /* force to use inline-block so that it gets minimum height */\n  display: inline-block;\n}\n\n.note .delete-note {\n  float: right;\n\n  padding: 0;\n\n  background-color: #fdfdfd;\n  border: none;\n\n  cursor: pointer;\n\n  visibility: hidden;\n}\n.note:hover .delete-note {\n  visibility: visible;\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(226);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(222)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./blog.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./blog.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(221)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "@charset \"UTF-8\";\nhtml, body {\n  width: 100%;\n  height: 100%; }\n\nbody {\n  background: #eee;\n  padding-bottom: 200px;\n  font-size: 16px;\n  font-family: Arial, \"\\6587\\6CC9\\9A5B\\6B63\\9ED1\", \"WenQuanYi Zen Hei\", \"\\5137\\9ED1   Pro\", \"LiHei Pro\", \"\\5FAE\\8EDF\\6B63\\9ED1\\9AD4\", \"Microsoft JhengHei\", \"\\6A19\\6977\\9AD4\", DFKai-SB, sans-serif; }\n\n#app {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.gadget {\n  position: absolute; }\n\n.logo {\n  position: absolute;\n  top: 20px;\n  left: 10px;\n  font-size: 24px;\n  font-weight: 900;\n  color: dimgray; }\n\n.drop-menu {\n  position: fixed;\n  color: #fff;\n  background-color: rgba(255, 66, 153, 0.71);\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  text-align: center;\n  padding-top: 100px;\n  font-size: 24px;\n  line-height: 2;\n  transition: all .3s ease;\n  z-index: -1; }\n  .drop-menu ul {\n    list-style: none;\n    padding: 0; }\n    .drop-menu ul a {\n      padding-bottom: 5px; }\n      .drop-menu ul a:hover {\n        border-bottom: 3px solid #3bdfba; }\n  .drop-menu .social {\n    position: absolute;\n    right: 0;\n    left: 0;\n    bottom: 30px; }\n    .drop-menu .social a {\n      margin: 10px;\n      padding-bottom: 5px;\n      text-decoration: none;\n      color: white; }\n      .drop-menu .social a:hover {\n        border-bottom: 3px solid #3bdfba; }\n\n.drop-btn {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  width: 30px;\n  height: 25px;\n  z-index: 10;\n  cursor: pointer; }\n  .drop-btn span, .drop-btn span:before, .drop-btn span:after {\n    position: absolute;\n    height: 4px;\n    width: 100%;\n    background: #fff;\n    transition: all 0.3s ease; }\n  .drop-btn span {\n    top: 10px; }\n    .drop-btn span:before {\n      content: '';\n      top: -10px; }\n    .drop-btn span:after {\n      content: '';\n      top: 10px; }\n  .drop-btn.clicked span {\n    transform: rotate(45deg); }\n    .drop-btn.clicked span:before {\n      opacity: 0; }\n    .drop-btn.clicked span:after {\n      top: 0;\n      transform: rotate(90deg); }\n\n.hero-section {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  z-index: 1; }\n\n.hero-content {\n  background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  background-attachment: fixed;\n  width: 100%;\n  height: 100vh;\n  z-index: 1;\n  opacity: 0.8; }\n\nheader {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  left: 0px;\n  height: 70px;\n  z-index: 2;\n  transition: all 0.3s ease; }\n  header.start {\n    top: -70px; }\n  header.scrolled {\n    position: fixed;\n    opacity: 1;\n    top: 0px;\n    display: block;\n    background-color: black; }\n\n.foot {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  text-align: center;\n  padding-bottom: 3.5%; }\n  .foot .copyright {\n    color: rgba(0, 0, 0, 0.47); }\n\n.date--perspective {\n  perspective: 900px;\n  position: absolute;\n  width: 75px;\n  height: 90px; }\n\n.date {\n  position: absolute;\n  width: 75px;\n  height: 90px;\n  background-color: #333;\n  text-align: center;\n  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;\n  transform-style: preserve-3d; }\n  .date:hover {\n    transform: rotateX(65deg); }\n  .date .day {\n    padding-top: 15px;\n    font-weight: 900;\n    color: white;\n    font-size: 40px; }\n  .date .month {\n    font-weight: 900;\n    color: white; }\n  .date .year {\n    background-color: rgba(60, 58, 53, 0.76);\n    font-weight: 900;\n    color: white;\n    position: absolute;\n    top: 100%;\n    width: 100%;\n    padding: 4px 0;\n    transform: rotateX(-90deg);\n    transform-origin: 50% 0%; }\n\n.green-bg {\n  background-color: #0da58e; }\n\n.lightgreen-bg {\n  background-color: #8cc152; }\n\n.lime-bg {\n  background-color: #cdda49; }\n\n.yellow-bg {\n  background-color: #fdc02f; }\n\n.orange-bg {\n  background-color: #fd9727; }\n\n.deeporange-bg {\n  background-color: #fc5830; }\n\n.red-bg {\n  background-color: #e2202c; }\n\n.pink-bg {\n  background-color: #e62565; }\n\n.purple-bg {\n  background-color: #9b2fae; }\n\n.deeppurple-bg {\n  background-color: #673fb4; }\n\n.blue-bg {\n  background-color: #4054b2; }\n\n.lightblue-bg {\n  background-color: #587bf8; }\n\n.colorpicker {\n  font-size: 0;\n  position: relative;\n  top: 200px;\n  padding: 0px;\n  width: 80%; }\n  .colorpicker li {\n    position: relative;\n    display: inline-block;\n    width: 8.333333%;\n    height: 50px; }\n    .colorpicker li:after {\n      transition: content 0.2s, opacity 0.2s 1s;\n      position: absolute;\n      color: #fff;\n      font-family: FontAwesome;\n      font-size: 20px;\n      content: \"\";\n      width: 100%;\n      height: 100%;\n      line-height: 50px;\n      text-align: center; }\n    .colorpicker li:hover:after {\n      content: \"\\F00C\"; }\n", ""]);
 
 	// exports
 

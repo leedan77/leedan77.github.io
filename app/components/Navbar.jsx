@@ -36,11 +36,11 @@ class Navbar extends React.Component {
   }
   handleClick = () => {
     if(this.state.btnClicked == false) {
-      document.getElementById("app").style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
       this.setState({btnClicked: true});
     }
     else {
-      document.getElementById("app").style.overflow = '';
+      document.body.style.overflow = '';
       this.setState({btnClicked: false});
     }
   }
