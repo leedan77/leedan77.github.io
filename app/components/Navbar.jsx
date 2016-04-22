@@ -49,7 +49,7 @@ class Navbar extends React.Component {
     return (
 
       <header className={"navbar "+ (this.state.scrolled ? "scrolled" : "") + (this.state.started ? "start" : "")}>
-        <span className="logo" style={this.state.btnClicked ? {color: "white"} : {} }>TxDragon</span>
+        <span className="logo" style={this.state.btnClicked || this.state.scrolled ? {color: "white"} : {} }>TxDragon</span>
         <Dropbtn onClick={this.handleClick} clicked={this.state.btnClicked}/>
         <Dropmenu clicked={this.state.btnClicked}/>
       </header>
