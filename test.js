@@ -12,4 +12,4 @@ const b = {
   a: 'ggg',
 }
 console.log( a && b);
-console.log(Object.assign({}, a && b));
+console.log(Object.assign({}, false || b));

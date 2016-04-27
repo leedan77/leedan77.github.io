@@ -11,6 +11,10 @@ const style = {
   }
 }
 
+Dropmenu.propTypes = {
+  clicked: React.propTypes.bool.isRequired,  
+};
+
 export default class Dropmenu extends React.Component {
   constructor(props) {
     super(props);

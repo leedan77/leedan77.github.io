@@ -1,5 +1,8 @@
 import React from 'react';
 
+Dropbtn.propTypes = {
+  clicked: React.PropTypes.bool.isRequired,
+};
 
 export default class Dropbtn extends React.Component {
 	constructor(props){
