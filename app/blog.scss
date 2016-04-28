@@ -1,5 +1,7 @@
 @charset "UTF-8";
-html, body {
+
+html,
+body {
   width: 100%;
   height: 100%;
 }
@@ -7,9 +9,10 @@ html, body {
 body {
   background: #eee;
   padding-bottom: 200px;
-  font-size: 16px; 
+  font-size: 16px;
   font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
 }
+
 #app {
   position: absolute;
   width: 100%;
@@ -41,16 +44,12 @@ body {
   padding-top: 100px;
   font-size: 24px;
   line-height: 2;
-  transition: all .3s ease;
-  z-index: -1; 
+  transition: all 0.3s ease;
+  z-index: -1;
 
   ul {
     list-style: none;
     padding: 0;
-
-    li {
-
-    }
 
     a {
       padding-bottom: 5px;
@@ -87,22 +86,25 @@ body {
   z-index: 10;
   cursor: pointer;
 
-  span, span:before, span:after {
+  span,
+  span::before,
+  span::after {
     position: absolute;
     height: 4px;
     width: 100%;
-    background: #fff;   
+    background: #fff;
     transition: all 0.3s ease;
   }
+
   span {
     top: 10px;
-    
-    &:before {
+
+    &::before {
       content: '';
       top: -10px;
     }
-    
-    &:after {
+
+    &::after {
       content: '';
       top: 10px;
     }
@@ -111,18 +113,19 @@ body {
   &.clicked {
     span {
       transform: rotate(45deg);
-    
-      &:before {
+
+      &::before {
         opacity: 0;
       }
 
-      &:after {
+      &::after {
         top: 0;
         transform: rotate(90deg);
       }
     }
   }
 }
+
 .hero-section {
   position: relative;
   width: 100%;
@@ -131,7 +134,7 @@ body {
   background-color: #fff;
 }
 
-.hero-content{
+.hero-content {
   background-image: url(http://hbchiro.net/wp/wp-content/uploads/nikukyu.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -140,14 +143,14 @@ body {
   width: 100%;
   height: 100vh;
   z-index: 1;
-  opacity: 0.8 ;
+  opacity: 0.8;
 }
 
 header {
   position: absolute;
   width: 100%;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 70px;
   z-index: 2;
   transition: all 0.3s ease;
@@ -157,10 +160,10 @@ header {
   &.scrolled {
     position: fixed;
     opacity: 1;
-    top: 0px;
+    top: 0;
     display: block;
     background-color: black;
-  } 
+  }
 }
 
 .foot {
@@ -177,38 +180,38 @@ header {
 }
 
 .date--perspective {
-	perspective: 900px;
+  perspective: 900px;
   position: absolute;
   width: 75px;
   height: 90px;
 }
 
-.date {	
-	position: absolute;
+.date {
+  position: absolute;
   width: 75px;
   height: 90px;
   background-color: #333;
   text-align: center;
   transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;
-	transform-style: preserve-3d;
+  transform-style: preserve-3d;
   &:hover {
-  	transform: rotateX(65deg);
+    transform: rotateX(65deg);
   }
-	
-	.day {
-		padding-top: 15px;
+
+  .day {
+    padding-top: 15px;
     font-weight: 900;
     color: white;
     font-size: 40px;
-	}
+  }
 
-	.month {
-		font-weight: 900;
-		color: white;
-	}
+  .month {
+    font-weight: 900;
+    color: white;
+  }
 
   .year {
-  	background-color: rgba(60, 58, 53, 0.76);
+    background-color: rgba(60, 58, 53, 0.76);
     font-weight: 900;
     color: white;
     position: absolute;
@@ -236,54 +239,65 @@ $light-blue: #587bf8;
 .green-bg {
   background-color: $green;
 }
+
 .lightgreen-bg {
   background-color: $light-green;
 }
+
 .lime-bg {
   background-color: $lime;
 }
+
 .yellow-bg {
   background-color: $yellow;
 }
+
 .orange-bg {
   background-color: $orange;
 }
+
 .deeporange-bg {
   background-color: $deep-orange;
 }
+
 .red-bg {
   background-color: $red;
 }
+
 .pink-bg {
   background-color: $pink;
 }
+
 .purple-bg {
   background-color: $purple;
 }
+
 .deeppurple-bg {
   background-color: $deep-purple;
 }
+
 .blue-bg {
   background-color: $blue;
 }
+
 .lightblue-bg {
   background-color: $light-blue;
 }
 
 .colorpicker {
-	font-size: 0;
+  font-size: 0;
   position: relative;
   top: 200px;
-  padding: 0px;
+  padding: 0;
   width: 80%;
 
-	li {
-		position: relative;
-		display: inline-block;
-		width: 8.333333%;
-		height: 50px;
-    
-    &:after {
+  li {
+    position: relative;
+    display: inline-block;
+    width: 8.333333%;
+    height: 50px;
+
+    &::after {
       transition: content 0.2s, opacity 0.2s 1s;
       position: absolute;
       color: #fff;
@@ -296,12 +310,11 @@ $light-blue: #587bf8;
       text-align: center;
     }
 
-  &:hover {
-    &:after {
-      content: "\f00c";
+    &:hover {
+      &::after {
+        content: "\f00c";
+      }
     }
   }
-		
-	}
 }
 
