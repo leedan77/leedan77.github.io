@@ -13,6 +13,14 @@ body {
   font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
 }
 
+svg {
+  position: absolute;
+  top: 750px;
+  fill-opacity: 0;
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+}
+
 #app {
   position: absolute;
   width: 100%;

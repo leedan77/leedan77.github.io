@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 export default class Dropbtn extends React.Component {
 	constructor(props){
 		super(props);
@@ -18,8 +16,8 @@ export default class Dropbtn extends React.Component {
 	}
   
 	render() {
-		return 
-    (	<div className={"drop-btn " + (this.props.clicked ? "clicked" : "")} onClick={this.props.onClick} >
+		return (	
+      <div className={"drop-btn " + (this.props.clicked ? "clicked" : "")} onClick={this.props.onClick} >
   		 	<span></span>
   		</div>
   	);
