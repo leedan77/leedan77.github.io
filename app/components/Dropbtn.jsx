@@ -16,10 +16,10 @@ export default class Dropbtn extends React.Component {
 		else
 			this.setState({clicked: false});
 	}
-
+  
 	render() {
-		return (
-			<div className={"drop-btn " + (this.props.clicked ? "clicked" : "")} onClick={this.props.onClick} >
+		return 
+    (	<div className={"drop-btn " + (this.props.clicked ? "clicked" : "")} onClick={this.props.onClick} >
   		 	<span></span>
   		</div>
   	);
