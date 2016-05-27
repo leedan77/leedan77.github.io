@@ -20,3 +20,18 @@ let t = new test();
 console.log(t.name);
 console.log( a && b);
 console.log(Object.assign({}, false || b));
+
+
+function A() {
+    this.x = function() {
+      console.log("g");
+    }
+}
+
+A.prototype.y = function() {
+  console.log("global");
+}
+var t1 = new A();
+var t2 = new A();
+t1.y();
+t2.x();

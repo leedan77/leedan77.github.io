@@ -1,3 +1,6 @@
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
+
 const path = require('path');
 const PATHS = {
 	app: path.join(__dirname, 'app'),
@@ -38,9 +41,12 @@ module.exports = {
       },
   		{
   			test: /\.css$/,
-  			loaders: ['style', 'css'],
+  			loaders: ['style', 'css', 'postcss'],
   			exclude: /node_modules/
   		}
   	]
+  },
+  postcss: function (){
+    return [precss, autoprefixer];
   }
 };
